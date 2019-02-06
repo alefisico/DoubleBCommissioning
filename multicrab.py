@@ -69,8 +69,7 @@ if __name__ == '__main__':
 	Samples[ '2018-BTagMuA' ] = [ '/BTagMu/Run2018A-17Sep2018-v1/MINIAOD', 10 ]
 	Samples[ '2018-BTagMuB' ] = [ '/BTagMu/Run2018B-17Sep2018-v1/MINIAOD', 10 ]
 	Samples[ '2018-BTagMuC' ] = [ '/BTagMu/Run2018C-17Sep2018-v1/MINIAOD', 10 ]
-	Samples[ '2018-BTagMuDv1' ] = [ '/BTagMu/Run2018D-PromptReco-v1/MINIAOD', 10 ]
-	Samples[ '2018-BTagMuDv2' ] = [ '/BTagMu/Run2018D-PromptReco-v2/MINIAOD', 10 ]
+	Samples[ '2018-BTagMuDv2' ] = [ '/BTagMu/Run2018D-PromptReco-v2/MINIAOD', 20 ]
 
 	Samples[ '2016-QCDExtPt170' ] = [ '/QCD_Pt-170to300_MuEnrichedPt5_TuneCUETP8M1_13TeV_pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3_ext1-v2/MINIAODSIM', 1 ]
 	Samples[ '2016-QCDExtPt300' ] = [ '/QCD_Pt-300to470_MuEnrichedPt5_TuneCUETP8M1_13TeV_pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3_ext1-v1/MINIAODSIM', 1 ]
@@ -91,12 +90,12 @@ if __name__ == '__main__':
 	Samples[ '2017-QCDPt800' ] = [ '/QCD_Pt-800to1000_MuEnrichedPt5_TuneCP5_13TeV_pythia8/RunIIFall17MiniAOD-94X_mc2017_realistic_v10-v1/MINIAODSIM', 1 ]
 	Samples[ '2017-QCDPt1000' ] = [ '/QCD_Pt-1000toInf_MuEnrichedPt5_TuneCP5_13TeV_pythia8/RunIIFall17MiniAOD-94X_mc2017_realistic_v10-v1/MINIAODSIM', 1 ]
 
-	Samples[ '2018-QCDPt170' ] = [ '/QCD_Pt-170to300_MuEnrichedPt5_TuneCP5_13TeV_pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v3/MINIAODSIM', 1 ]
-	Samples[ '2017-QCDPt300' ] = [ '/QCD_Pt-300to470_MuEnrichedPt5_TuneCP5_13TeV_pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v3/MINIAODSIM', 1 ]
-	Samples[ '2017-QCDPt470' ] = [ '/QCD_Pt-470to600_MuEnrichedPt5_TuneCP5_13TeV_pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM', 1 ]
-	Samples[ '2017-QCDPt600' ] = [ '/QCD_Pt-600to800_MuEnrichedPt5_TuneCP5_13TeV_pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM', 1 ]
-	Samples[ '2017-QCDPt800' ] = [ '', 1 ]
-	Samples[ '2017-QCDPt1000' ] = [ '/QCD_Pt-1000toInf_MuEnrichedPt5_TuneCP5_13TeV_pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM', 1 ]
+	#Samples[ '2018-QCDPt170' ] = [ '/QCD_Pt-170to300_MuEnrichedPt5_TuneCP5_13TeV_pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v3/MINIAODSIM', 1 ]
+	Samples[ '2018-QCDPt300' ] = [ '/QCD_Pt-300to470_MuEnrichedPt5_TuneCP5_13TeV_pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v3/MINIAODSIM', 1 ]
+	Samples[ '2018-QCDPt470' ] = [ '/QCD_Pt-470to600_MuEnrichedPt5_TuneCP5_13TeV_pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM', 1 ]
+	Samples[ '2018-QCDPt600' ] = [ '/QCD_Pt-600to800_MuEnrichedPt5_TuneCP5_13TeV_pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM', 1 ]
+	#Samples[ '2018-QCDPt800' ] = [ '', 1 ]
+	Samples[ '2018-QCDPt1000' ] = [ '/QCD_Pt-1000toInf_MuEnrichedPt5_TuneCP5_13TeV_pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM', 1 ]
 
 
 	processingSamples = {}
@@ -123,9 +122,9 @@ if __name__ == '__main__':
 
 		if 'BTagMu' in dataset:
 			procName = dataset.split('/')[1]+'_'+dataset.split('/')[2]+'_'+args.version
-            if '2017' in sam: config.Data.lumiMask = 'https://cms-service-dqm.web.cern.ch/cms-service-dqm/CAF/certification/Collisions17/13TeV/ReReco/Cert_294927-306462_13TeV_EOY2017ReReco_Collisions17_JSON_v1.txt'
-            elif '2018' in sam: config.Data.lumiMask = 'https://cms-service-dqm.web.cern.ch/cms-service-dqm/CAF/CMSCOMM/COMM_DQM/certification/Collisions18/13TeV/PromptReco/Cert_314472-325175_13TeV_PromptReco_Collisions18_JSON.txt'
-            else: '/afs/cern.ch/cms/CAF/CMSCOMM/COMM_DQM/certification/Collisions16/13TeV/ReReco/Final/Cert_271036-284044_13TeV_23Sep2016ReReco_Collisions16_JSON.txt'
+                        if '2017' in sam: config.Data.lumiMask = 'https://cms-service-dqm.web.cern.ch/cms-service-dqm/CAF/certification/Collisions17/13TeV/ReReco/Cert_294927-306462_13TeV_EOY2017ReReco_Collisions17_JSON_v1.txt'
+                        elif '2018' in sam: config.Data.lumiMask = 'https://cms-service-dqm.web.cern.ch/cms-service-dqm/CAF/certification/Collisions18/13TeV/PromptReco/Cert_314472-325175_13TeV_PromptReco_Collisions18_JSON.txt'
+                        else: '/afs/cern.ch/cms/CAF/CMSCOMM/COMM_DQM/certification/Collisions16/13TeV/ReReco/Final/Cert_271036-284044_13TeV_23Sep2016ReReco_Collisions16_JSON.txt'
 			config.Data.splitting = 'LumiBased'
 			config.General.workArea = 'crab_projects/Data'
 
