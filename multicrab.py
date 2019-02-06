@@ -94,6 +94,7 @@ if __name__ == '__main__':
 	if len(processingSamples)==0: print 'No sample found. \n Have a nice day :)'
 
         if '2017' in args.dataset: listParam.append('defaults=Moriond18')
+        elif '2018' in args.dataset: listParam.append('defaults=Prompt18')
         else: listParam.append('defaults=2016_SF')
         if 'QCD' in args.dataset: listParam.append('runOnData=False')
         else: listParam.append('runOnData=True')
@@ -108,7 +109,9 @@ if __name__ == '__main__':
 
 		if 'BTagMu' in dataset:
 			procName = dataset.split('/')[1]+'_'+dataset.split('/')[2]+'_'+args.version
-			config.Data.lumiMask = ( 'https://cms-service-dqm.web.cern.ch/cms-service-dqm/CAF/certification/Collisions17/13TeV/ReReco/Cert_294927-306462_13TeV_EOY2017ReReco_Collisions17_JSON_v1.txt' if '2017' in sam else '/afs/cern.ch/cms/CAF/CMSCOMM/COMM_DQM/certification/Collisions16/13TeV/ReReco/Final/Cert_271036-284044_13TeV_23Sep2016ReReco_Collisions16_JSON.txt' )
+            if '2017' in sam: config.Data.lumiMask = 'https://cms-service-dqm.web.cern.ch/cms-service-dqm/CAF/certification/Collisions17/13TeV/ReReco/Cert_294927-306462_13TeV_EOY2017ReReco_Collisions17_JSON_v1.txt'
+            elif '2018' in sam: config.Data.lumiMask = 'https://cms-service-dqm.web.cern.ch/cms-service-dqm/CAF/certification/Collisions17/13TeV/ReReco/Cert_294927-306462_13TeV_EOY2017ReReco_Collisions17_JSON_v1.txt'
+            else: '/afs/cern.ch/cms/CAF/CMSCOMM/COMM_DQM/certification/Collisions16/13TeV/ReReco/Final/Cert_271036-284044_13TeV_23Sep2016ReReco_Collisions16_JSON.txt'
 			config.Data.splitting = 'LumiBased'
 			config.General.workArea = 'crab_projects/Data'
 
