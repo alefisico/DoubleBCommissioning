@@ -12,7 +12,7 @@ from CRABAPI.RawCommand import crabCommand
 #############################################
 #### This are general parameters.
 #### Change them if needed
-listParam = ['miniAOD=True', 'doBoostedCommissioning=True', 'groups=DoubleBCommissioning' ]   ### dont include runOnData, it is added automatically later
+listParam = []   ### dont include runOnData or defaults, it is added automatically later
 
 #### General crab parameters
 config = config()
@@ -93,8 +93,8 @@ if __name__ == '__main__':
 			if sam.startswith( args.dataset ): processingSamples[ sam ] = Samples[ sam ]
 	if len(processingSamples)==0: print 'No sample found. \n Have a nice day :)'
 
-        if '2017' in args.dataset: listParam.append('defaults=Moriond18')
-        else: listParam.append('defaults=2016_SF')
+        if '2017' in args.dataset: listParam.append('defaults=Moriond19Boosted_2017')
+        else: listParam.append('defaults=Moriond19Boosted')
         if 'QCD' in args.dataset: listParam.append('runOnData=False')
         else: listParam.append('runOnData=True')
 
